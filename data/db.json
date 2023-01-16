@@ -1,0 +1,56 @@
+{
+  "buckets": [
+    {
+      "bucket_title": "Songs List Hurayyyyyy",
+      "videos": [
+        {
+          "video_id": 0,
+          "video_name": "Akshat",
+          "video_link": "https://www.youtube.com/embed/GLGuLXKT9Ng"
+        },
+        {
+          "video_id": 1,
+          "video_name": "Akshatr",
+          "video_link": "https://www.youtube.com/embed/GLGuLXKT9Ng"
+        },
+        {
+          "video_id": 2,
+          "video_name": "Akshat",
+          "video_link": "https://www.youtube.com/embed/GLGuLXKT9Ng"
+        },
+        {
+          "video_id": 3,
+          "video_name": "Akshat",
+          "video_link": "https://www.youtube.com/embed/GLGuLXKT9Ng"
+        },
+        {
+          "video_id": 4,
+          "video_name": "Akshat",
+          "video_link": "https://www.youtube.com/embed/GLGuLXKT9Ng"
+        },
+        {
+          "video_id": 5,
+          "video_name": "Akshat",
+          "video_link": "https://www.youtube.com/embed/GLGuLXKT9Ng"
+        },
+        {
+          "video_id": 6,
+          "video_name": "Akshat",
+          "video_link": "https://www.youtube.com/embed/GLGuLXKT9Ng"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "bucket_title": "dgdg",
+      "videos": [],
+      "id": 4
+    },
+    {
+      "bucket_title": "dgdfgd",
+      "videos": [],
+      "id": 5
+    }
+  ],
+  "history": []
+}

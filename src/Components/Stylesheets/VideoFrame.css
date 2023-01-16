@@ -1,0 +1,39 @@
+.open-video{
+    
+    background-image: linear-gradient(360deg, #04598e, #0474CC) !important;
+    border-radius: 15px;
+    border:none;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    font-weight: 600;
+    width:70px;
+}
+
+.open-video:hover{
+    background-image: linear-gradient(360deg, #0470b3, #048ff9) !important;
+}
+
+.ant-modal-content{
+    min-height:min-content;
+    min-width:min-content !important;
+}
+
+.video-modal .ant-modal-body{
+    min-height:500px;
+}
+
+.video-modal .ant-modal-footer{
+    height: 0;
+
+}
+
+.videoplayer-div iframe{
+    width: 852px;
+    height: 480px;
+    padding: 0;
+    margin: 0;
+}
+
+.video-modal{
+    left: -12%;
+    top: 10%;
+}

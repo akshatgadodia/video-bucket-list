@@ -1,0 +1,107 @@
+.card-outer{
+    width: 100%;
+    min-height: 60px;
+    display:flex;
+    justify-content: space-between ;
+    align-items: center ;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    margin-bottom: 10px;
+}
+.card{
+    height: 100%;
+    width: 100%;
+    display:flex;
+    justify-content: space-between ;
+    align-items: center ;
+    border-radius: 20px;
+    background-color: white;
+    padding-right: 10px;
+}
+
+.ant-checkbox{
+    background-color: transparent;
+}
+
+.ant-checkbox{
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}
+
+.ant-checkbox-checked .ant-checkbox-inner{
+    background-color: red;
+}
+
+.edit-btn{
+        background-image: linear-gradient(360deg, #000000, #444444) !important;
+        border-radius: 15px;
+        border:none;
+        width: 70px !important;
+        box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+        font-weight: 600;
+}
+
+.card p{
+    text-align: left;
+    line-height: 0;
+    margin: 0;
+}
+
+.ant-checkbox-wrapper{
+    height: 60px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-image: linear-gradient(360deg, #000000, #5b5b5b);
+    border-radius: 20px 0 0 20px !important;
+}
+
+.card .open-btn{
+    width: 70px;
+}
+
+.card-container{
+    display: flex;
+    justify-content: flex-end;
+    gap:10px;
+    align-items: center;
+}
+
+.checkbox-mobile{
+    display: none;
+}
+@media only screen and (max-width:420px){
+    .checkbox-desktop{
+        display: none;
+    }
+    .checkbox-mobile{
+        display: block;
+        height: 80px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px 0 0 20px !important;
+    }
+    .card-outer{
+        min-height: 80px;
+    }
+    .card{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+    }
+    .card-container:first-of-type{
+        width: 100%;
+    }
+    .card-container:last-of-type{
+        width: 100%;
+        justify-content: center;  
+    }
+    .card p{
+        width: 100%;
+        text-align: center;
+    }
+}
