@@ -1,0 +1,27 @@
+.spinner-mask{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10000;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner-spin .ant-spin-dot-item{
+    background-color: #abe31f !important;
+}
+
+.spinner-spin .ant-spin{
+    color: #abe31f !important;
+}
+
+.spinner-mask-hidden{
+    display: none;
+}

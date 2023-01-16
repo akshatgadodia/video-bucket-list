@@ -1,5 +1,4 @@
 .open-video{
-    
     background-image: linear-gradient(360deg, #04598e, #0474CC) !important;
     border-radius: 15px;
     border:none;
@@ -7,33 +6,41 @@
     font-weight: 600;
     width:70px;
 }
-
 .open-video:hover{
     background-image: linear-gradient(360deg, #0470b3, #048ff9) !important;
 }
-
-.ant-modal-content{
-    min-height:min-content;
-    min-width:min-content !important;
-}
-
-.video-modal .ant-modal-body{
-    min-height:500px;
-}
-
-.video-modal .ant-modal-footer{
-    height: 0;
-
-}
-
-.videoplayer-div iframe{
-    width: 852px;
-    height: 480px;
-    padding: 0;
-    margin: 0;
-}
-
 .video-modal{
-    left: -12%;
-    top: 10%;
+    width: calc(100% - 10px) !important;
+    max-width: 852px !important;
+    aspect-ratio: 9/16 !important;
+}
+.video-modal .ant-modal-footer{
+    display: none;
+}
+.video-modal .ant-modal-body{
+    aspect-ratio: 16/9 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position: relative;
+}
+.video-modal-spin{
+    position: absolute;
+    aspect-ratio : 16/9 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 2000;
+}
+.video-modal .ant-spin{
+    color: #abe31f !important;
+}
+.video-modal .ant-spin-dot-item{
+    background-color: #abe31f !important;
+}
+.videoplayer{
+    aspect-ratio : 16/9 !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }

@@ -1,10 +1,11 @@
 import { Button, Modal } from 'antd';
 import React, { useState } from 'react';
+import {Spin } from 'antd';
 import "./Stylesheets/VideoFrame.css";
 
 const VideoFrame = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-
+  const [iframeLoaded, setIframeLoaded] = useState(true);
   const showModal = () => {
     if(props.from!=="history")
       props.onClick();
@@ -18,6 +19,10 @@ const VideoFrame = (props) => {
     setIsModalVisible(false);
   };
 
+  const onLoadHandler = async () => {
+    setIframeLoaded(false);
+  }
+
 return (
   <>
     <Button size="middle" className="open-video" type="primary" onClick={showModal}>PLAY
@@ -27,17 +32,11 @@ return (
     className='video-modal'
     title="MEDIA PLAYER"
     visible={isModalVisible}
-    onCancel={handleCancel}
-    
-    footer={[
-        
-      ]}>
-          
-      <div className='videoplayer-div'>
-      <iframe classname="videoplayer" src={props.link} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
-      allowfullscreen></iframe>
-      </div>
-
+    onCancel={handleCancel}>
+    <Spin size="large" tip="Loading..." spinning={iframeLoaded} className="video-modal-spin"/>
+    <iframe className="videoplayer" src={props.link} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" 
+            allowfullscreen style={{overflow:"hidden", height:"100%", width:"100%"}} height="100%" width="100%" 
+            onLoad={onLoadHandler} title="Youtube Video"></iframe>
     </Modal>
   </>
 );

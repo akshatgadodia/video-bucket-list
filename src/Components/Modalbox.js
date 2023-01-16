@@ -3,6 +3,7 @@ import { Button, Modal, Input } from 'antd';
 import React, { useState} from 'react';
 import DropdownMenu from './Dropdown';
 import { useEffect } from 'react';
+import Spinner from "./Spinner";
 
 const Modalbox = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -10,9 +11,11 @@ const Modalbox = (props) => {
   const [videoLink, setVideoLink] = useState('');
   const [bucketNameData,setBucketNameData] = useState([]);
   const [selectedBucket,setSelectedBucket] = useState(props.bucketID);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () =>{
+    setLoading(true);
         const response = await fetch("/buckets",{method: "GET"});
         const data = await response.json();
         setBucketNameData(data);
@@ -26,6 +29,7 @@ const Modalbox = (props) => {
         setVideoLink('')
         setVideoName('')
       }
+    setLoading(false);
   }, [isModalVisible])
   
 
@@ -36,6 +40,7 @@ const Modalbox = (props) => {
 
 
   const handleOkBucket = async () => {
+    setLoading(true);
     let response = await fetch(`/buckets/${props.id}`,{method: "GET"});
     const data = await response.json();
     let index = (data.videos.length===0) ? 0 :data.videos[data.videos.length-1].video_id+1;
@@ -56,6 +61,7 @@ const Modalbox = (props) => {
     response = await fetch("/buckets",{method: "GET"});
     response = await response.json();
     props.setData(response);
+    setLoading(false);
     setIsModalVisible(false);
   };
 
@@ -64,6 +70,7 @@ const Modalbox = (props) => {
   };
 
   const handleOkVideoCard = async () => {
+    setLoading(true);
     if(selectedBucket!==props.bucketID){
       let response = await fetch(`/buckets/${selectedBucket}`,{method: "GET"});
       let data = await response.json();
@@ -132,6 +139,7 @@ const Modalbox = (props) => {
       response = await response.json();
       props.setData(response);
     }
+    setLoading(false);
     setIsModalVisible(false);
   };
 
@@ -141,6 +149,7 @@ const Modalbox = (props) => {
 
   return (
     <>
+      <Spinner loading={loading}/>
       <Button size="middle" className="open-btn" type="primary" onClick={showModal}>
         {props.btnName}
       </Button>

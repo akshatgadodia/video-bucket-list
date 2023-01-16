@@ -1,10 +1,12 @@
 import "./Stylesheets/Popup.css";
 import { Button, Modal, Input } from 'antd';
 import React, { useState } from 'react';
+import Spinner from "./Spinner";
 
 const Popup = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [name,setName] = useState(undefined);
+  const [loading, setLoading] = useState(false);
 
   const showModal = () => {
     setName(undefined)
@@ -12,6 +14,8 @@ const Popup = (props) => {
   };
 
   const handleOk = async () => {
+    setLoading(true)
+    setIsModalVisible(true);
     let data = {
       "bucket_title": name,
       "videos" : []
@@ -28,6 +32,7 @@ const Popup = (props) => {
     response = await response.json();
     props.setData(response);
     setName(undefined)
+    setLoading(false)
     setIsModalVisible(false);
   };
 
@@ -38,6 +43,7 @@ const Popup = (props) => {
 
   return (
     <>
+      <Spinner loading={loading}/>
       <Button size="middle" className="open-bucket-btn" type="primary" onClick={showModal}>ADD BUCKET</Button>
       <Modal
       destroyOnClose

@@ -7,7 +7,7 @@
   align-items: center;
   height: 60px;
   padding: 0;
-  background-image: linear-gradient(360deg, #04598e, #0474cc);
+  background-image: linear-gradient(360deg, #04598e, rgb(4, 116, 204));
   border-radius: 30px !important;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
@@ -75,10 +75,42 @@
 .tab-body {
   width: 100%;
   min-height: calc(100vh - 125px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buckets-container-main{
+  height: 100%;
+  width: 100% !important;
+  /* margin: 0 !important;
+  padding: 0 !important; */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
   gap: 30px;
   padding: 30px 0;
+}
+
+.buckets-container-pagination{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.buckets-container-pagination .ant-pagination-item-link, .buckets-container-pagination .ant-pagination-item{
+  border-radius: 100% !important;
+}
+.buckets-container-pagination .ant-pagination-item{
+  text-align: center;
+  padding-top: 7.5px;
+}
+
+.ant-pagination.ant-pagination-mini .ant-pagination-prev .ant-pagination-item-link, .ant-pagination.ant-pagination-mini .ant-pagination-next .ant-pagination-item-link{
+  color: rgba(0, 0, 0, 0.85);
+  background-color: #fff;
 }
 
 @media only screen and (max-width: 900px) {
@@ -140,7 +172,7 @@
 }
 
 @media only screen and (max-width: 420px) {
-  .tab-body {
+  .buckets-container-main{
     grid-template-columns: 1fr;
   }
 }

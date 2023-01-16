@@ -10,6 +10,7 @@
   padding: 2px 20px;
   width: 100%;
   height: fit-content;
+  margin-bottom: 20px !important;
 }
 
 .foot p {

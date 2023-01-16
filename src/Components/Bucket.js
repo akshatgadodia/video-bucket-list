@@ -6,11 +6,13 @@ import VideoCard from "../Components/VideoCard";
 import Modalbox from "../Components/Modalbox";
 import BucketEdit from "./BucketEdit";
 import { DeleteOutlined } from "@ant-design/icons";
+import Spinner from "./Spinner";
 
 const Bucket = props => {
   const [elementsToDelete, setElementsToDelete] = useState([]);
   const [videoData, setVideoData] = useState([]);
   const [displayVideoData, setDisplayVideoData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   function GetSortOrder() {
     return function(a, b) {
@@ -48,7 +50,7 @@ const Bucket = props => {
     else
       setDisplayVideoData(
         displayVideoData.filter(record => {
-          return record.video_name.includes(value);
+          return record.video_name.toLowerCase().includes(value.toLowerCase());
         })
       );
   };
@@ -66,6 +68,7 @@ const Bucket = props => {
   };
 
   const deleteBucket = async () => {
+    setLoading(true);
     await fetch(`/buckets/${props.id}`, {
       method: "DELETE",
       mode: "cors",
@@ -78,9 +81,11 @@ const Bucket = props => {
     let response = await fetch("/buckets", { method: "GET" });
     response = await response.json();
     props.setData(response);
+    setLoading(false);
   };
 
   const deleteElements = async () => {
+    setLoading(true);
     let response = await fetch(`/buckets/${props.id}`, { method: "GET" });
     let data = await response.json();
     data.videos = data.videos.filter(value => {
@@ -100,10 +105,12 @@ const Bucket = props => {
     response = await fetch("/buckets", { method: "GET" });
     response = await response.json();
     props.setData(response);
+    setLoading(false);
   };
 
   return (
     <div className="bucket-shell">
+      <Spinner loading={loading}/>
       <div className="bucket-outer">
         <div className="bucket-header">
           <p>

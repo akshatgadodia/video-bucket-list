@@ -110,3 +110,8 @@
     background-image: linear-gradient(360deg, rgb(142, 0, 0), red) !important;
     border-radius: 0 20px 0 0 !important;
 }
+
+.edit-bucket-modal-spin{
+    height: 100%;
+    width: 100%;
+}
