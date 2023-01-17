@@ -12,17 +12,17 @@ const middlewares = jsonServer.defaults({
 });
 
 server.use(middlewares);
-// server.use(
-//     jsonServer.rewriter({
-//         '/api/*': '/$1',
-//     })
-// );
+server.use(
+    jsonServer.rewriter({
+        '/api/*': '/$1',
+    })
+);
 server.use(cors());
-server.use('/api',router);
+server.use(router);
 
-server.get('/website', (req, res) => {
+server.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
-  })
+})
 
 server.listen(port, () => {
     console.log(`JSON Server is running on port ${port}`);
