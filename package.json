@@ -1,5 +1,6 @@
 {
   "name": "ui",
+  "homepage": "https://video-bucket-list.vercel.app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
