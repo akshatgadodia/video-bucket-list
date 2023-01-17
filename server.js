@@ -8,7 +8,7 @@ const router = jsonServer.router('./data/db.json');
 const port = process.env.PORT || 8000;
 
 const middlewares = jsonServer.defaults({
-    static: 'build'
+    static: path.join(__dirname, 'build')
 });
 
 server.use(middlewares);
