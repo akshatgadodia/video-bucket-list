@@ -7,11 +7,11 @@ const router = jsonServer.router('./data/db.json');
 
 const port = process.env.PORT || 8000;
 
-const middlewares = jsonServer.defaults({
-    static: path.join(__dirname, 'build')
-});
-
-server.use(middlewares);
+// const middlewares = jsonServer.defaults({
+//     static: path.join(__dirname, 'build')
+// });
+// server.use(middlewares);
+server.use(jsonServer.defaults(['./build'])) //for static files
 server.use(
     jsonServer.rewriter({
         '/api/*': '/$1',
