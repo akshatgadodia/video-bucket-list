@@ -15,6 +15,7 @@ server.use(jsonServer.defaults(['./build'])) //for static files
 server.use(
     jsonServer.rewriter({
         '/api/*': '/$1',
+        '/' : '/build/index.html',
     })
 );
 server.use(cors());
