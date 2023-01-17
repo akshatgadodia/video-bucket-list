@@ -20,7 +20,7 @@ server.use(middlewares);
 server.use(cors());
 server.use('/api',router);
 
-server.get('/', (req, res) => {
+server.get('/website', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
   })
 
