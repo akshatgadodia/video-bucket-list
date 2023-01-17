@@ -12,15 +12,15 @@ const middlewares = jsonServer.defaults({
 });
 
 server.use(middlewares);
-server.use(
-    jsonServer.rewriter({
-        '/api/*': '/$1',
-    })
-);
+// server.use(
+//     jsonServer.rewriter({
+//         '/api/*': '/$1',
+//     })
+// );
 server.use(cors());
-server.use(router);
+server.use('/api',router);
 
-server.get('/*', (req, res) => {
+server.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
   })
 
