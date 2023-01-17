@@ -1,25 +1,4 @@
 {
-  "buckets": [
-    {
-      "bucket_title": "Hindi Songs",
-      "videos": [],
-      "id": 1
-    },
-    {
-      "bucket_title": "English Songs",
-      "videos": [],
-      "id": 2
-    }
-  ],
-  "history": [
-    {
-      "bucket_id": 3,
-      "bucket_title": "Bakwas",
-      "video_id": 0,
-      "video_name": "fghfh",
-      "video_link": "fghfghfh",
-      "last_played": "6:01:00 PM 1/17/2023",
-      "id": 1
-    }
-  ]
+  "buckets": [],
+  "history": []
 }
