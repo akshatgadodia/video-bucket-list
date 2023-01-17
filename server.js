@@ -1,5 +1,5 @@
 const jsonServer = require('json-server');
-const cors = require('cors');
+// const cors = require('cors');
 const path = require('path');
 
 const server = jsonServer.create();
@@ -15,15 +15,15 @@ server.use(jsonServer.defaults(['./build'])) //for static files
 server.use(
     jsonServer.rewriter({
         '/api/*': '/$1',
-        '/*' : '/build/index.html',
     })
 );
-server.use(cors());
-server.use(router);
+// server.use(cors());
 
 server.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 })
+
+server.use(router);
 
 server.listen(port, () => {
     console.log(`JSON Server is running on port ${port}`);
