@@ -10,7 +10,7 @@ const middlewares = jsonServer.defaults({
     static: path.join(__dirname, 'build')
 });
 server.use(middlewares);
-
+server.use(jsonServer.defaults(['./build']))
 server.use(
     jsonServer.rewriter({
         '/api/*': '/$1',

@@ -5,7 +5,7 @@ import HistoryTab from "../Components/HistoryTab";
 import React, { useEffect, useState } from "react";
 import { Pagination } from "antd";
 
-const TabSwitch = () => {
+const TabSwitch = (props) => {
   const [data, setData] = useState([]);
   const [active, setActiveTab] = useState(false);
   const numEachPage = 6; //default size of page
@@ -59,7 +59,7 @@ const TabSwitch = () => {
           </div>
         </div>
       </div>
-      {active
+      {(active && !props.notFound) 
         ? <HistoryTab active={active} />
         : <div className="tab-body">
           <div className="buckets-container-main">
