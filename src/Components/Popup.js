@@ -20,7 +20,7 @@ const Popup = (props) => {
       "bucket_title": name,
       "videos" : []
     }
-    await fetch(`/buckets/`, {
+    await fetch(`/api/buckets/`, {
         method: 'POST', mode: 'cors',credentials: 'same-origin',
         headers: {
             'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ const Popup = (props) => {
         referrerPolicy: 'no-referrer',
         body: JSON.stringify(data)
     });
-    let response = await fetch("/buckets",{method: "GET"});
+    let response = await fetch("/api/buckets",{method: "GET"});
     response = await response.json();
     props.setData(response);
     setName(undefined)

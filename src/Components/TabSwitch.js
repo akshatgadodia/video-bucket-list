@@ -14,7 +14,7 @@ const TabSwitch = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      let response = await fetch("/buckets", { method: "GET" });
+      let response = await fetch("/api/buckets", { method: "GET" });
       let data = await response.json();
       setData(data);
     };

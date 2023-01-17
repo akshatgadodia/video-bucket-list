@@ -69,7 +69,7 @@ const Bucket = props => {
 
   const deleteBucket = async () => {
     setLoading(true);
-    await fetch(`/buckets/${props.id}`, {
+    await fetch(`/api/buckets/${props.id}`, {
       method: "DELETE",
       mode: "cors",
       credentials: "same-origin",
@@ -78,7 +78,7 @@ const Bucket = props => {
       },
       referrerPolicy: "no-referrer"
     });
-    let response = await fetch("/buckets", { method: "GET" });
+    let response = await fetch("/api/buckets", { method: "GET" });
     response = await response.json();
     props.setData(response);
     setLoading(false);
@@ -86,13 +86,13 @@ const Bucket = props => {
 
   const deleteElements = async () => {
     setLoading(true);
-    let response = await fetch(`/buckets/${props.id}`, { method: "GET" });
+    let response = await fetch(`/api/buckets/${props.id}`, { method: "GET" });
     let data = await response.json();
     data.videos = data.videos.filter(value => {
       return !elementsToDelete.includes(value.video_id);
     });
     setElementsToDelete([]);
-    await fetch(`/buckets/${props.id}`, {
+    await fetch(`/api/buckets/${props.id}`, {
       method: "PUT",
       mode: "cors",
       credentials: "same-origin",
@@ -102,7 +102,7 @@ const Bucket = props => {
       referrerPolicy: "no-referrer",
       body: JSON.stringify(data)
     });
-    response = await fetch("/buckets", { method: "GET" });
+    response = await fetch("/api/buckets", { method: "GET" });
     response = await response.json();
     props.setData(response);
     setLoading(false);

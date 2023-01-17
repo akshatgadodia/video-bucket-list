@@ -23,7 +23,7 @@ const VideoCard = props => {
       video_link: props.link,
       last_played: date.toLocaleTimeString() + " " + date.toLocaleDateString()
     };
-    await fetch(`/history/`, {
+    await fetch(`/api/history/`, {
       method: "POST",
       mode: "cors",
       credentials: "same-origin",

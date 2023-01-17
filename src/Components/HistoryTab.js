@@ -21,7 +21,7 @@ const Tableview = (props) => {
 
   useEffect(() => {
     const fetchHistory = async () => {
-      const response = await fetch("/history",{method: "GET"});
+      const response = await fetch("/api/history",{method: "GET"});
       const data = await response.json();
       setHistory(data.sort(GetSortOrder()));
     }
@@ -29,14 +29,14 @@ const Tableview = (props) => {
   }, [props.active])
   
   const deleteHistory = async (id) => {
-    await fetch(`/history/${id}`, {
+    await fetch(`/api/history/${id}`, {
       method: 'DELETE', mode: 'cors',credentials: 'same-origin',
       headers: {
           'Content-Type': 'application/json'
       },
       referrerPolicy: 'no-referrer',
     });
-    let response = await fetch("/history",{method: "GET"});
+    let response = await fetch("/api/history",{method: "GET"});
     response = await response.json();
     setHistory(response);
   }
@@ -52,7 +52,7 @@ const Tableview = (props) => {
             "last_played": date.toLocaleTimeString()+" "+date.toLocaleDateString() 
         }
         // console.log(data);
-        await fetch(`/history/`, {
+        await fetch(`/api/history/`, {
             method: 'POST', mode: 'cors',credentials: 'same-origin',
             headers: {
                 'Content-Type': 'application/json'
@@ -60,7 +60,7 @@ const Tableview = (props) => {
             referrerPolicy: 'no-referrer',
             body: JSON.stringify(data)
         });
-        const response = await fetch("/history",{method: "GET"});
+        const response = await fetch("/api/history",{method: "GET"});
         data = await response.json();
         setHistory(data.sort(GetSortOrder()));
   }

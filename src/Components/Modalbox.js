@@ -16,7 +16,7 @@ const Modalbox = (props) => {
   useEffect(() => {
     const fetchData = async () =>{
     setLoading(true);
-        const response = await fetch("/buckets",{method: "GET"});
+        const response = await fetch("/api/buckets",{method: "GET"});
         const data = await response.json();
         setBucketNameData(data);
         setVideoName(props.videoName)
@@ -41,7 +41,7 @@ const Modalbox = (props) => {
 
   const handleOkBucket = async () => {
     setLoading(true);
-    let response = await fetch(`/buckets/${props.id}`,{method: "GET"});
+    let response = await fetch(`/api/buckets/${props.id}`,{method: "GET"});
     const data = await response.json();
     let index = (data.videos.length===0) ? 0 :data.videos[data.videos.length-1].video_id+1;
     const newData = {
@@ -50,7 +50,7 @@ const Modalbox = (props) => {
       "video_link":videoLink
     }
     data.videos[data.videos.length]=newData;
-    await fetch(`/buckets/${props.id}`, {
+    await fetch(`/api/buckets/${props.id}`, {
         method: 'PUT', mode: 'cors',credentials: 'same-origin',
         headers: {
             'Content-Type': 'application/json'
@@ -58,7 +58,7 @@ const Modalbox = (props) => {
         referrerPolicy: 'no-referrer',
         body: JSON.stringify(data)
     });
-    response = await fetch("/buckets",{method: "GET"});
+    response = await fetch("/api/buckets",{method: "GET"});
     response = await response.json();
     props.setData(response);
     setLoading(false);
@@ -72,7 +72,7 @@ const Modalbox = (props) => {
   const handleOkVideoCard = async () => {
     setLoading(true);
     if(selectedBucket!==props.bucketID){
-      let response = await fetch(`/buckets/${selectedBucket}`,{method: "GET"});
+      let response = await fetch(`/api/buckets/${selectedBucket}`,{method: "GET"});
       let data = await response.json();
       let index = (data.videos.length===0) ? 0 :data.videos[data.videos.length-1].video_id+1;
       const newData = {
@@ -81,7 +81,7 @@ const Modalbox = (props) => {
         "video_link":videoLink//props.videoLink
       }
       data.videos[index]=newData;
-      await fetch(`/buckets/${selectedBucket}`, {
+      await fetch(`/api/buckets/${selectedBucket}`, {
         method: 'PUT', mode: 'cors',credentials: 'same-origin',
         headers: {
             'Content-Type': 'application/json'
@@ -90,7 +90,7 @@ const Modalbox = (props) => {
         body: JSON.stringify(data)
       });
 
-      response = await fetch(`/buckets/${props.bucketID}`,{method: "GET"});
+      response = await fetch(`/api/buckets/${props.bucketID}`,{method: "GET"});
       data = await response.json();
       index = props.videoId;
       let videos = data.videos.filter((video)=>{
@@ -98,7 +98,7 @@ const Modalbox = (props) => {
         return video.video_id!==index;
       })
       data.videos = videos;
-      await fetch(`/buckets/${props.bucketID}`, {
+      await fetch(`/api/buckets/${props.bucketID}`, {
         method: 'PUT', mode: 'cors',credentials: 'same-origin',
         headers: {
             'Content-Type': 'application/json'
@@ -107,12 +107,12 @@ const Modalbox = (props) => {
         body: JSON.stringify(data)
       });
 
-      response = await fetch("/buckets",{method: "GET"});
+      response = await fetch("/api/buckets",{method: "GET"});
       response = await response.json();
       props.setData(response);
     }
     else{
-      let response = await fetch(`/buckets/${props.bucketID}`,{method: "GET"});
+      let response = await fetch(`/api/buckets/${props.bucketID}`,{method: "GET"});
       let data = await response.json();
       let id = props.videoId;
       const newData = {
@@ -126,7 +126,7 @@ const Modalbox = (props) => {
       videos[videos.length]=newData;
       console.log(videos)
       data.videos = videos;
-      await fetch(`/buckets/${props.bucketID}`, {
+      await fetch(`/api/buckets/${props.bucketID}`, {
         method: 'PUT', mode: 'cors',credentials: 'same-origin',
         headers: {
             'Content-Type': 'application/json'
@@ -135,7 +135,7 @@ const Modalbox = (props) => {
         body: JSON.stringify(data)
       });
 
-      response = await fetch("/buckets",{method: "GET"});
+      response = await fetch("/api/buckets",{method: "GET"});
       response = await response.json();
       props.setData(response);
     }

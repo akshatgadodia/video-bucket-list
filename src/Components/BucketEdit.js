@@ -15,10 +15,10 @@ const BucketEdit = (props) => {
 
   const handleOk = async () => {
     setLoading(true);
-    let response = await fetch(`/buckets/${props.id}`,{method: "GET"});
+    let response = await fetch(`/api/buckets/${props.id}`,{method: "GET"});
     let data = await response.json();
     data.bucket_title=name;
-    await fetch(`/buckets/${props.id}`, {
+    await fetch(`/api/buckets/${props.id}`, {
         method: 'PUT', mode: 'cors',credentials: 'same-origin',
         headers: {
             'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ const BucketEdit = (props) => {
         referrerPolicy: 'no-referrer',
         body: JSON.stringify(data)
     });
-    response = await fetch("/buckets",{method: "GET"});
+    response = await fetch("/api/buckets",{method: "GET"});
     response = await response.json();
     props.setData(response);
     setName('');
